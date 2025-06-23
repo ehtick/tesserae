@@ -107,7 +107,7 @@ namespace Tesserae
 
                 if (component.HasOwnProperty("StackItem"))
                 {
-                    component["StackItem"].As<HTMLElement>().style.alignSelf = item.style.alignSelf;
+                    component["StackItem"].As<HTMLElement>().style.justifySelf = item.style.justifySelf;
                 }
             }
         }
