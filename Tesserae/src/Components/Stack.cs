@@ -89,6 +89,29 @@ namespace Tesserae
             }
         }
 
+        public static void SetJustify(IComponent component, ItemJustify align)
+        {
+            var (item, remember) = GetCorrectItemToApplyStyle(component);
+            var cssAlign = align.ToString();
+
+            if (cssAlign == "end" || cssAlign == "start")
+            {
+                cssAlign = $"flex-{cssAlign}";
+            }
+
+            item.style.alignSelf = cssAlign;
+
+            if (remember)
+            {
+                item.setAttribute("tss-stk-js", "");
+
+                if (component.HasOwnProperty("StackItem"))
+                {
+                    component["StackItem"].As<HTMLElement>().style.alignSelf = item.style.alignSelf;
+                }
+            }
+        }
+
         /// <summary>
         /// Sets the align-items css property for this stack
         /// </summary>
@@ -704,6 +727,7 @@ namespace Tesserae
             if (has("tss-stk-fs")) { ts.flexShrink = fs.flexShrink; /*fs.flexShrink = ""; */ }
 
             if (has("tss-stk-as")) { ts.alignSelf = fs.alignSelf; /*fs.alignSelf = "";*/ }
+            if (has("tss-stk-js")) { ts.justifySelf= fs.justifySelf; /*fs.alignSelf = "";*/ }
 
             //We need to propagate some styles otherwise they don't work if they were applied before adding to the stack
             foreach (var s in _stylesToPropagate)
