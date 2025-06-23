@@ -92,24 +92,6 @@ namespace Tesserae
             return component;
         }
 
-        public static T JustifyAuto<T>(this T component) where T : IComponent
-        {
-            Stack.SetJustify(component, ItemJustify.Auto);
-            return component;
-        }
-
-        public static T JustifyStretch<T>(this T component) where T : IComponent
-        {
-            Stack.SetJustify(component, ItemJustify.Stretch);
-            return component;
-        }
-
-        public static T JustifyBaseline<T>(this T component) where T : IComponent
-        {
-            Stack.SetJustify(component, ItemJustify.Baseline);
-            return component;
-        }
-
         public static T JustifyStart<T>(this T component) where T : IComponent
         {
             Stack.SetJustify(component, ItemJustify.Start);
