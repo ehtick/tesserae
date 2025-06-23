@@ -86,6 +86,10 @@ namespace Tesserae
                 {
                     component["StackItem"].As<HTMLElement>().style.alignSelf = item.style.alignSelf;
                 }
+                else if (component.HasOwnProperty("GridItem"))
+                {
+                    component["GridItem"].As<HTMLElement>().style.justifySelf = item.style.justifySelf;
+                }
             }
         }
 
@@ -108,6 +112,10 @@ namespace Tesserae
                 if (component.HasOwnProperty("StackItem"))
                 {
                     component["StackItem"].As<HTMLElement>().style.justifySelf = item.style.justifySelf;
+                }
+                else if (component.HasOwnProperty("GridItem"))
+                {
+                    component["GridItem"].As<HTMLElement>().style.justifySelf = item.style.justifySelf;
                 }
             }
         }
@@ -727,7 +735,7 @@ namespace Tesserae
             if (has("tss-stk-fs")) { ts.flexShrink = fs.flexShrink; /*fs.flexShrink = ""; */ }
 
             if (has("tss-stk-as")) { ts.alignSelf = fs.alignSelf; /*fs.alignSelf = "";*/ }
-            if (has("tss-stk-js")) { ts.justifySelf= fs.justifySelf; /*fs.alignSelf = "";*/ }
+            if (has("tss-stk-js")) { ts.justifySelf= fs.justifySelf; /*fs.justifySelf = "";*/ }
 
             //We need to propagate some styles otherwise they don't work if they were applied before adding to the stack
             foreach (var s in _stylesToPropagate)
